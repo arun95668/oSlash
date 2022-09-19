@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <style>
+        .project h2 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 24px;
+            line-height: 32px;
+        }
+
+        .project .fontStyles {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 20px;
+        }
+
+        .project .fontStyles2 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .project .fontStyles3 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 16px;
+        }
+
+        .project .fontStyles4 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 16px;
+        }
+
+        .project .fontStyles5 {
+            font-family: 'Inter';
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .project .shareBtn {
+            background: #111827;
+            border-radius: 4px;
+            /* padding: 8px 16px; */
+            width: 95px;
+            height: 36px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .project .shareBtn>div {
+            font-weight: 500;
+            color: #FFFFFF
+        }
+
+        .project .shareBtn>img {
+            margin-left: 9.6px;
+        }
+
+        .project .content .div1 {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid #E5E7EB;
+            padding: 16px 12px;
+        }
+
+        .project .content .selectedItems {
+            margin-top: 16px;
+        }
+
+        .project .content .selectedItem,
+        .project .content .div3 {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .project .content .selectedItem .imgIcon {
+            width: 40px;
+            height: 40px;
+        }
+
+        .project .content .selectedItem:not(:nth-child(1)) {
+            margin-top: 16px;
+        }
+
+        .project .content .div1>div,
+        .project .content .selectedItem>div,
+        .project .content .div3>div,
+        .project .div6>div {
+            display: flex;
+            align-items: center;
+        }
+
+        .project .content .div1 .text {
+            margin-left: 12px;
+        }
+
+        .project .img-responsive {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .project .content {
+            background: #FFFFFF;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+            width: 512px;
+            margin-top: 4px;
+            /* padding: 16px 12px; */
+        }
+
+
+        .project .content .share1 {
+
+            color: #111827;
+        }
+
+        .project .content .share2 {
+
+            color: #6B7280
+        }
+
+        .project .content .toggbtn {
+            display: flex;
+            align-items: center;
+            float: right;
+            /* margin-top: 1rem; */
+        }
+
+        .project .content .toggbtn .switch {
+            position: relative;
+            display: inline-block;
+            width: 44px;
+            height: 24px;
+            margin: 0 0.8rem;
+        }
+
+        .project .content .toggbtn .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .project .content .toggbtn .slider.round {
+            border-radius: 34px;
+        }
+
+        .project .content .toggbtn .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: #E5E7EB;
+            border-radius: 12px;
+            /* -webkit-transition: .4s;
+            transition: .4s; */
+        }
+
+        .project .content .toggbtn .slider.round:before {
+            border-radius: 50%;
+        }
+
+        .project .content .toggbtn .slider:before {
+            position: absolute;
+            content: "";
+            height: 20px;
+            width: 20px;
+            left: 2px;
+            /* bottom: 1.5px; */
+            bottom: 2px;
+            background-color: #FFFFFF;
+            box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.06);
+            /* -webkit-transition: .4s;
+            transition: .4s; */
+        }
+
+        .project .content .div2 {
+            padding: 16px 12px;
+        }
+
+        .project .content .search {
+            display: flex;
+        }
+
+        .project .content .columnSearch {
+            padding: 9px 0 9px 13px;
+
+            width: 414px;
+            box-sizing: border-box;
+            margin-left: auto;
+            color: #96968C;
+            font-weight: normal;
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
+            border-radius: 6px 0 0 6px;
+        }
+
+        .project .content .invite {
+            padding: 9px 17px 9px 15px;
+            gap: 8px;
+            width: 74px;
+            background: #F9FAFB;
+            border: 1px solid #D1D5DB;
+            border-radius: 0px 6px 6px 0px;
+            color: #374151;
+            text-align: center;
+        }
+
+        .project .content .selectedItem .text,
+        .project .content .div3 .text,
+        .project .div6 .text {
+            margin-left: 8px;
+        }
+
+        .project .hide {
+            display: none;
+        }
+
+        .project .sortDropdown {
+            position: relative;
+            padding: 7px 9px 7px 11px;
+            width: 104px;
+            display: flex;
+        }
+
+        .project .sortDropdown img {
+            position: absolute;
+            top: 7px;
+            right: 9px;
+        }
+
+        .project .sortDropdown>p {
+            color: #6B7280;
+            margin: 0;
+        }
+
+        .project .content .selectedItem>div:nth-child(2) {
+            height: 30px;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .project .sortDropdownItems li {
+            list-style: none;
+            padding: 8px;
+            border-radius: 4px;
+        }
+
+        .project .sortDropdownItems li:hover,
+        .project .sortDropdownItems li.selected {
+            background: #F3F4F6;
+
+        }
+
+        .project .sortDropdownItems ul {
+            left: 0;
+            position: absolute;
+            padding: 8px;
+            margin: 0;
+            z-index: 99;
+            background: #FFFFFF;
+            border: 1px solid #F3F4F6;
+            box-shadow: 0px 10px 15px rgb(0 0 0 / 10%), 0px 4px 6px rgb(0 0 0 / 5%);
+            border-radius: 4px;
+            width: 172px;
+            height: 172px;
+            top: 35px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project .content .div3 {
+            border-top: 1px solid #E5E7EB;
+            padding: 8px 12px;
+        }
+
+        .project .searchbox {
+            width: 512px;
+            border: 1px solid #E5E7EB;
+            box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1), 0px 4px 6px -2px rgba(0, 0, 0, 0.05);
+            border-radius: 8px;
+        }
+
+        .project .searchbox .div4 {
+            padding: 12px 16px;
+            background: #F3F4F6;
+            border-bottom: 1px solid #E5E7EB;
+            border-radius: 8px 8px 0px 0px;
+            display: flex;
+            justify-content: space-between;
+
+        }
+
+        .project .searchbox .div4 input {
+            width: 211px;
+            background: #F3F4F6;
+            border: #F3F4F6;
+        }
+
+        .project .searchbox .div4 input:focus-visible {
+            outline: none;
+        }
+
+        .project .searchbox .div4>div:nth-child(3) {
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .project .searchbox .invite {
+            color: #374151;
+            padding: 9px 13px;
+            background: #FFFFFF;
+            border: 1px solid #D1D5DB;
+            border-radius: 6px;
+        }
+
+        .project .searchbox .div5 {
+            padding: 16px;
+        }
+
+        .project .no-margin {
+            margin: 0;
+        }
+
+        .project .personslist p,
+        .project .groupslist p {
+            padding-left: 12px;
+        }
+
+        .project .groupslist {
+            margin-top: 16px;
+        }
+
+        .project .persons {
+            margin-top: 8px;
+        }
+
+
+        .project .person,
+        .project .group {
+            padding: 8px 12px;
+            align-items: center;
+        }
+
+        .project .person:hover,
+        .project .group:hover {
+            background: #F3F4F6;
+            border-radius: 4px
+        }
+
+        .project .person img,
+        .project .group img {
+            width: 24px;
+            height: 24px;
+            border-radius: 12px;
+            margin-right: 12px;
+        }
+
+        .project .group img {
+            border-radius: 6px;
+        }
+
+        .project .div6 {
+            background: #F3F4F6;
+            border-top: 1px solid #E5E7EB;
+            border-radius: 0px 0px 8px 8px;
+            padding: 8px 12px;
+        }
+
+        .project .dflex {
+            display: flex;
+        }
+
+        .project .person.active,
+        .project .group.active {
+            background: #F3F4F6;
+            border-radius: 4px;
+        }
+
+        .project .tag {
+            background: #E5E7EB;
+            border-radius: 4px;
+            padding: 4px 8px;
+            /* display: flex; */
+            align-items: center;
+        }
+
+        .project .tag>div {
+            margin-right: 8px;
+        }
+    </style>
+    <section class="project">
+        <h2>Click on Share button</h2>
+        <div class="shareBtn">
+            <div class="fontStyles">Share</div>
+            <img src="C:/Users/lenovo/Desktop/oslash/images/share.png" class="img-responsive" alt="share.png">
+        </div>
+        <div class="content hide">
+            <div class="div1">
+                <div>
+                    <img src="C:/Users/lenovo/Desktop/oslash/images/Globe.png" class="img-responsive" alt="Globe.png">
+                    <div class="text">
+                        <div class="share1 fontStyles2">Share to web</div>
+                        <div class="share2 fontStyles">Publish and share link with anyone</div>
+                    </div>
+                </div>
+                <div class="toggbtn">
+
+                    <label class="switch">
+                        <input type="checkbox">
+                        <span class="slider round"></span>
+                    </label>
+
+                </div>
+            </div>
+            <div class="div2">
+                <div class="search">
+                    <input type="text" class="form-control columnSearch fontStyles2"
+                        placeholder="People, emails, groups">
+                    <div class="invite fontStyles5">Invite</div>
+                </div>
+                <div class="selectedItems">
+                    <div class="selectedItem">
+                        <div>
+                            <img src="C:/Users/lenovo/Desktop/oslash/images/Leading content.png"
+                                class="img-responsive imgIcon" alt="Leading content.png">
+                            <div class="text">
+                                <div class="share1">Everyone at OSlash</div>
+                                <div class="share2 fontStyles">25 workspace members</div>
+                            </div>
+                        </div>
+                        <div>
+
+                            <div id="sortDropdown" class="sortDropdown ">
+                                <p class="init fontStyles3" value="No Access">No Access</p>
+                                <img src="C:/Users/lenovo/Desktop/oslash/images/Chevron down.png" class="img-responsive" alt="Chevron down.png">
+                            </div>
+                            <div id="sortDropdownItems" class="sortDropdownItems hide">
+                                <ul class=" ">
+
+                                    <li data-value="Full Access">Full Access</li>
+                                    <li data-value="Can edit">Can edit</li>
+                                    <li data-value="Can view">Can view</li>
+                                    <li data-value="No access">No access</li>
+
+                                </ul>
+                            </div>
+
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="div3">
+                <div>
+                    <img src="C:/Users/lenovo/Desktop/oslash/images/Question mark circle.png" class="img-responsive" alt="Question mark circle.png">
+                    <div class="text">
+                        <div class="fontStyles">learn about sharing</div>
+                    </div>
+                </div>
+                <div>
+                    <img src="C:/Users/lenovo/Desktop/oslash/images/Link.png" class="img-responsive">
+                    <div class="text">
+                        <div class="fontStyles4">Copy link</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="searchbox hide">
+            <div class="div4">
+                <input type="text" class="form-control columnSearch fontStyles"
+                    placeholder="Search emails, names or groups" value="" />
+                <div class="tag hide">
+                    <div></div>
+                    <img src="C:/Users/lenovo/Desktop/oslash/images/cancel.png" alt="cancel.png" class="cancel img-responsive">
+                </div>
+                <div>
+
+                    <div id="sortDropdown" class="sortDropdown ">
+                        <p class="init fontStyles3">No Access</p>
+                        <img src="C:/Users/lenovo/Desktop/oslash/images/Chevron down.png" class="img-responsive" alt="Chevron down.png">
+                    </div>
+                    <div id="sortDropdownItems" class="sortDropdownItems hide">
+                        <ul class=" ">
+
+                            <li data-value="function">Full Access</li>
+                            <li data-value="industry">Can edit</li>
+                            <li data-value="technology">
+                                Can view
+                            </li>
+                            <li data-value="serviceoffering">No access
+
+                            </li>
+
+                        </ul>
+
+                    </div>
+                    <div class="invite fontStyles4">Invite</div>
+                </div>
+            </div>
+            <div class="div5">
+                <div class="personslist">
+                    <p class="fontStyles5 no-margin">Select a person</p>
+                    <div class="persons">
+                        <div class="person dflex">
+                            <img src="C:/Users/lenovo/Desktop/oslash/images/Avatar1.png" class="img-responsive" alt="Avatar1.png">
+                            <div class="fontStyles2">Tom cook</div>
+                        </div>
+                        <div class="person dflex">
+                            <img src="C:/Users/lenovo/Desktop/oslash/images/Avatar2.png" class="img-responsive" alt="Avatar2.png">
+                            <div class="fontStyles2">Arlene Mccoy</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="groupslist">
+                    <p class="fontStyles5 no-margin">Select a group</p>
+                    <div class="groups">
+                        <div class="group dflex">
+                            <img src="C:/Users/lenovo/Desktop/oslash/images/Avatar3.png" class="img-responsive" alt="Avatar3.png">
+                            <div class="fontStyles2">Product</div>
+                        </div>
+                        <div class="group dflex">
+                            <img src="C:/Users/lenovo/Desktop/oslash/images/Avatar4.png" class="img-responsive" alt="Avatar4.png">
+                            <div class="fontStyles2">Engineering</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="div6">
+                <div>
+                    <img src="C:/Users/lenovo/Desktop/oslash/images/Question mark circle.png" class="img-responsive" alt="Question mark circle.png">
+                    <div class="text">
+                        <div class="fontStyles">learn about sharing</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <script>
+        $(document).ready(function () {
+            // Click on Share button
+            $('.shareBtn').click(function () {
+                if ($('.content').hasClass('hide')) {
+                    $('.content').removeClass('hide')
+                }
+                else {
+                    $('.content').addClass('hide')
+                }
+
+            })
+            
+            // click on input field to add people, emails, groups
+            $('.content .div2 .columnSearch').click(function () {
+                $('.content').addClass('hide')
+                $('.content').siblings().addClass('hide')
+                $('.searchbox').removeClass('hide')
+                $('.cancel').trigger('click')
+            })
+
+            // search functionality
+            $('.columnSearch').keyup(function (e) {
+                var searchText = $.trim($(this).val()).toUpperCase();
+                let newname = ['person', 'group']
+                for (i in newname) {
+                    $(`.${newname[i]} div`).each(function () {
+                        if ($(this).parent().css('display') == "flex") {
+                            $(this).parent().addClass('initialEle')
+                        }
+                    })
+
+                    if (searchText != '') {
+                        $(`.${newname[i]}`).each(function () {
+                            if ($(this).hasClass('initialEle')) {
+                                var name = $(this).children('div').text();
+
+
+                                if ((name.toUpperCase().indexOf(searchText) > -1) && ($(this).hasClass('initialEle'))) {
+                                    $(this).addClass('dflex');
+                                    $(this).removeClass('hide');
+                                }
+                                else {
+                                    $(this).removeClass('dflex');
+                                    $(this).addClass('hide');
+                                }
+                            }
+                        })
+
+                    }
+                    else {
+                        $(`.${newname[i]}`).each(function () {
+                            if ($(this).hasClass('initialEle')) {
+                                $(this).removeClass('hide');
+                                $(this).addClass('dflex');
+                                $(this).removeClass('initialEle')
+                            }
+                            else {
+                                $(this).addClass('hide')
+                                $(this).removeClass('initialEle')
+                            }
+                        })
+                    }
+                    if ($(`.${newname[i]}s`).children().length == $(`.${newname[i]}s .hide`).length) {
+                        $(`.${newname[i]}slist`).addClass('hide')
+                    }
+                    else {
+                        $(`.${newname[i]}slist`).removeClass('hide')
+                    }
+
+                }
+                
+                var key = e.which;
+                 if (key ==40 ) {// the down key code
+
+                    if ($('.groupslist').hasClass('hide') && $('.personslist .person.dflex').length == 1) {
+                        $('.personslist .person.dflex').addClass('active')
+                    }
+                    else if ($('.personslist').hasClass('hide') && $('.groupslist .group.dflex').length == 1) {
+                        $('.groupslist .group.dflex').addClass('active')
+                    }
+
+                }
+                if (key == 13) {// the enter key code
+
+                    if ($('.groupslist').hasClass('hide') && $('.personslist .person.dflex').length == 1) {
+                        $('.personslist .person.dflex').addClass('active')
+                        $('.personslist .person.dflex').trigger('click')
+                    }
+                    else if ($('.personslist').hasClass('hide') && $('.groupslist .group.dflex').length == 1) {
+                        $('.groupslist .group.dflex').addClass('active')
+                        $('.groupslist .group.dflex').trigger('click')
+                    }
+
+                }
+
+            })
+            
+            // person and group click
+            $('.person , .group').click(function () {
+                // $('.div4 .columnSearch').attr('value', $(this).children('div').text())
+                // $('.div4 .columnSearch').attr('imgvalue', $(this).children('img').attr('src'))
+                $('.div4 input').addClass('hide')
+                $('.div4 .tag').removeClass('hide')
+                $('.div4 .tag').addClass('dflex')
+                $('.div4 .tag div').text($(this).children('div').text())
+                $('.div4 .tag div').attr('value', $(this).children('div').text())
+                $('.div4 .tag div').attr('imgvalue', $(this).children('img').attr('src'))
+                $('.person , .group').addClass('hide')
+                $('.person , .group').removeClass('dflex')
+                $('.personslist,.groupslist').addClass('hide')
+                $(this).addClass('dflex')
+                $(this).removeClass('hide')
+                $(this).parent().parent().removeClass('hide')
+            })
+            
+            // cancel button click
+            $('.cancel').click(function () {
+                $('.div4 input').removeClass('hide')
+                $('.div4 .tag').addClass('hide')
+                $('.div4 .tag').removeClass('dflex')
+                $('.person , .group').removeClass('hide')
+                $('.person , .group').removeClass('active')
+                $('.person , .group').addClass('dflex')
+                $('.personslist,.groupslist').removeClass('hide')
+                $(".columnSearch  ").val("");
+            })
+            
+            // invite button click
+            $('.div4 .invite').click(function () {
+                $('.content').removeClass('hide')
+                $('.content').siblings().removeClass('hide')
+                $('.searchbox').addClass('hide')
+                let htm = ''
+                htm += '<div class="selectedItem">'
+                htm += '<div>'
+                htm += '<img src="' + $('.div4 .tag div').attr('imgvalue') + '" class="img-responsive imgIcon" alt="sample">'
+                htm += '<div class="text">'
+                htm += '<div class="share1"> ' + $('.div4 .tag div').attr('value') + '</div >'
+                htm += '<div class="share2 fontStyles"></div>'
+                htm += '</div > '
+                htm += '</div>'
+                htm += '<div>'
+
+                htm += '<div id = "sortDropdown" class="sortDropdown " >'
+                htm += '<p class="init fontStyles3" value="' + $('.div4 .init').text() + '">' + $('.div4 .init').text() + '</p>'
+                htm += '<img src="C:/Users/lenovo/Desktop/oslash/images/Chevron down.png" class="img-responsive" alt="Chevron down.png">'
+                htm += '</div>'
+                htm += '<div id="sortDropdownItems" class="sortDropdownItems hide">'
+                htm += '<ul class="fontStyles ">'
+
+                htm += '<li data-value="Full Access">Full Access</li>'
+                htm += '<li data-value="Can edit" >Can edit</li>'
+                htm += '<li data-value="Can view">Can view</li>'
+                htm += '<li data-value="No access">No access</li>'
+
+                htm += '</ul>'
+                htm += '</div>'
+
+                htm += '</div > '
+                htm += '</div>'
+                $('.selectedItems').append(htm)
+
+              
+                $('.sortDropdown').unbind().click(sortDropdownClick);
+                $(".sortDropdownItems li").unbind().click(sortDropdownItemsClick);
+            })
+
+            function sortDropdownClick() {
+                if (!$(this).siblings(".sortDropdownItems").hasClass('hide')) {
+                    $(".sortDropdownItems").addClass('hide');
+                }
+                else {
+                    $(".sortDropdownItems").addClass('hide');
+                    $(this).siblings(".sortDropdownItems").removeClass('hide');
+                }
+                // $(".sortDropdownItems").addClass('hide');
+                // $(this).siblings(".sortDropdownItems").removeClass('hide');
+
+            };
+            function sortDropdownItemsClick() {
+                var pervVal = $(this).closest(".sortDropdownItems").siblings('.sortDropdown').children('.init').text()
+                var curentVal = $(this).html();
+                $(this).closest(".sortDropdownItems").siblings('.sortDropdown').children('.init').html($(this).html());
+                var selectedValue = $(this).attr("data-value");
+                $(".sortDropdownItems li").removeClass("selected");
+                $(this).addClass("selected");
+                $(this).closest(".sortDropdownItems").addClass('hide')
+            };
+            
+            $('.sortDropdown').click(sortDropdownClick);
+            $(".sortDropdownItems li").click(sortDropdownItemsClick);
+
+
+        })
+    </script>
+</body>
+
+</html>
